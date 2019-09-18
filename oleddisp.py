@@ -28,9 +28,6 @@ import json
 import subprocess
 import time
 
-# Import Requests Library
-# import requests
-
 # Import Blinka
 from board import SCL, SDA
 import busio
@@ -38,8 +35,6 @@ import adafruit_ssd1306
 
 # Import Python Imaging Library
 from PIL import Image, ImageDraw, ImageFont
-
-#api_url = 'http://localhost/admin/api.php'
 
 start_time = time.time()
 
@@ -103,27 +98,8 @@ while (time.time() - start_time) <= 15:
           "\"Disk: %d/%dGB %s\", $3,$2,$5}'"
     Disk = subprocess.check_output(cmd, shell=True).decode("utf-8")
 
-##    # Pi Hole data!
-##    try:
-##        r = requests.get(api_url)
-##        data = json.loads(r.text)
-##        DNSQUERIES = data['dns_queries_today']
-##        ADSBLOCKED = data['ads_blocked_today']
-##        CLIENTS = data['unique_clients']
-##    except KeyError:
-##        time.sleep(1)
-##        continue
 
-    draw.text((x, top), "IP: " + str(IP) +
-              "( " + HOST + ")", font=font, fill=255)
-##    draw.text((x, top + 8), "Ads Blocked: " +
-##              str(ADSBLOCKED), font=font, fill=255)
-##    draw.text((x, top + 16), "Clients:     " +
-##              str(CLIENTS), font=font, fill=255)
-##    draw.text((x, top + 24), "DNS Queries: " +
-##              str(DNSQUERIES), font=font, fill=255)
-
-    #skip over original stats
+    draw.text((x, top), "IP: " + str(IP) + "( " + HOST + ")", font=font, fill=255)
     draw.text((x, top+8),     str(CPU), font=font, fill=255)
     draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
     draw.text((x, top+25),    str(Disk),  font=font, fill=255)
