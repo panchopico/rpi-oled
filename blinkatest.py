@@ -3,7 +3,7 @@ import digitalio
 import busio
 
 print("Hello blinka!")
-print("This test will not output to the OLED screen.")
+print("This test won't output to the OLED screen.")
 # Try to great a Digital input
 pin = digitalio.DigitalInOut(board.D4)
 print("Digital IO ok!")
